@@ -46,7 +46,7 @@ Regras:
 3. Garanta o idioma português (`por`).
 
 ### macOS (Tesseract)
-```bash
+``bash
 brew install tesseract
 brew install tesseract-lang
 
