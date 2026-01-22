@@ -1,0 +1,27 @@
+# Example configuration (optional). If omitted, defaults are used.
+# Copy to config.yaml and adjust.
+
+naming:
+  # Final filename (without extension) will follow:
+  # {date}__{doc_id}__{doc_type}__{provider}__BRL{amount}
+  # where date is YYYY-MM-DD and amount is 1234.56
+  separator: "__"
+  max_len: 180
+
+validation:
+  min_year: 2000
+  max_future_days: 7
+  ocr_min_mean_conf: 90        # fail-safe: if OCR confidence is below this, mark REVIEW
+  min_native_text_chars: 200   # below this, force OCR
+
+rules:
+  # Which date to prefer when both appear. Options: emission, competence, auto
+  date_preference: auto
+
+required_fields:
+  # For each doc_type, define which fields must be present with 1.0 confidence to rename.
+  # Fields: date, doc_id, provider, amount
+  NF: [date, doc_id, provider, amount]
+  COMPROVANTE: [date, provider, amount]
+  EXTRATO: [date, provider, amount]   # doc_id usually absent in extratos
+  DOCUMENTO: [date, provider, amount]
